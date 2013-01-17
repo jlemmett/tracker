@@ -1,0 +1,13 @@
+# tracker
+
+A simple work time tracker webapp written in Clojure for learning purposes.
+
+## Usage
+
+TBD
+
+## License
+
+Copyright (C) 2013 Janne
+
+Distributed under the Eclipse Public License, the same as Clojure.
