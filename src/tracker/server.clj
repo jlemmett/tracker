@@ -6,6 +6,39 @@
             [ring.util.response :as response]
             [net.cgrand.enlive-html :as h]))
 
+
+;; in-memory persistence for the tasks
+;; structure: {:user1 {:date1 [{task1} {task2} ...], date2 ...}, :user2 ...}
+(def ^:private tasks (ref {}))
+
+(defn work-categories []
+  ["Iteration 1", "Uncategorized"]
+  )
+
+(defn add-task-entry [user date time work-category tags]
+
+  ;; case: new user
+
+  ;; case: existing user, new date
+
+  ;; case: existing user, existing date, new task
+
+  "tbd"
+
+  )
+
+(defn handle-task-input [params]
+  (let [user (keyword (:user params))
+        date (keyword (:date params))
+        time (:time params)
+        work-category (keyword (:work-category params))
+        tags (:tags params)]
+
+    (add-task-entry user date time work-category tags)
+    (print-str @tasks)
+    ))
+
+
 (defroutes app*
   (GET "/" request "Welcome!")
   (GET "/task-input" request (task-input (work-categories)))
@@ -14,17 +47,6 @@
 
 (def app (compojure.handler/api app*))
 
-(defn handle-task-input [params]
-  (format "Time=(%s), Category=(%s), Tags=(%s)" (:time params) (:work-category params) (:tags params)))
-
 ;; ; To run locally:
 ;; (use '[ring.adapter.jetty :only (run-jetty)])
-;; (def server (run-jetty #'app {:port 8080 :join? false}))
-
-;; dummy data for work categories
-;; TODO Move to a proper place
-(defn work-categories []
-
-  ["Iteration 1", "Uncategorized"]
-
-  )
+;; (def server (run-jetty #'app {:port 8080 :join? false})) (def server (run-jetty #'app {:port 8080 :join? false}))
