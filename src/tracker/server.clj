@@ -2,6 +2,7 @@
 
   (:use [compojure.core :only (GET PUT POST defroutes)])
   (:use [tracker.views])
+  (:use [tracker.input])
   (:require (compojure handler route)
             [ring.util.response :as response]
             [net.cgrand.enlive-html :as h]))
@@ -15,17 +16,7 @@
   ["Iteration 1", "Uncategorized"]
   )
 
-(defn add-task-entry [user date time work-category tags]
 
-  ;; case: new user
-
-  ;; case: existing user, new date
-
-  ;; case: existing user, existing date, new task
-
-  "tbd"
-
-  )
 
 (defn handle-task-input [params]
   (let [user (keyword (:user params))
@@ -34,7 +25,7 @@
         work-category (keyword (:work-category params))
         tags (:tags params)]
 
-    (add-task-entry user date time work-category tags)
+    (add-task-entry user date time work-category tags tasks)
     (print-str @tasks)
     ))
 
