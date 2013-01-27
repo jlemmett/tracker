@@ -39,6 +39,7 @@
     (is (= {:user1 {:21-06-1984 [{:time 45 :work-category :category1 :tags "tags1"}]}} @tasks))
 
     (add-task-entry :user1 :22-06-1984 {:time 45 :work-category :category1 :tags "tags1"} tasks)
+
     (is (=
 
          {
