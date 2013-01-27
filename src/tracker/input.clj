@@ -8,21 +8,29 @@
 
 (defn add-task-entry [user date task-input tasks]
 
+  ;; input validation?
+
   (dosync
 
    (cond
-
+    ;; new user
     (not (@tasks user)) (alter tasks assoc user {date [task-input]})
 
-    :else "TBD")
+    ;; existing user, new date
+    (not ((@tasks user) date)) (alter tasks assoc-in [user date]  [task-input])
+
+    ;; case: existing user, existing date, new task
+    ((@tasks user) date) (alter tasks assoc-in [user date] (conj ((@tasks user) date) task-input))
+
+    ;; what happens if we get here?
+    )
+
+
+
+
+
+
+
 
    )
-
-  ;; case: new user
-
-  ;; case: existing user, new date
-
-  ;; case: existing user, existing date, new task
-
-
   )
