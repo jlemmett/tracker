@@ -10,9 +10,12 @@
 
 ;; in-memory persistence for the tasks
 ;; structure: {:user1 {:date1 [{task1} {task2} ...], date2 ...}, :user2 ...}
-(def ^:private tasks (ref {}))
+;(def ^:private tasks (ref {}))
 
-(defn pers [] tasks)
+; Some initial data for testing
+(def ^:private tasks (ref {:test-user {:2013-01-25 [{:time "45", :work-category :Iteration-1, :tags "jorma tarha", :description "asdf"}{:time "90", :work-category :Uncategorized, :tags "saab pontiac", :description "jobalaba"}{:time "180", :work-category :Uncategorized, :tags "hurlum", :description "sabaton"}{:time "350", :work-category :Iteration-1, :tags "V0001 F0025", :description ""}]}}))
+
+(defn show-tasks [] tasks)
 
 (defn work-categories []
   ["Iteration 1", "Uncategorized"]
