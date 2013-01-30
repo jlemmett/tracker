@@ -1,42 +1,44 @@
-<form id="task-input" action="/task-input" method="POST">
+<div id="task-input">
+  <form id="task-input-form" action="/task-input" method="POST">
 
-  <input id="user" name="user" type="hidden" value="test-user"/>
+    <input id="user" name="user" type="hidden" value="test-user"/>
 
-  <input id="date" name="date" type="hidden" value="2013-01-25"/>
+    <input id="date" name="date" type="hidden" value="2013-01-25"/>
 
-  <label for="time">Time (minutes)</label>
-  <input id="time" name="time" type="text"/>
+    <label for="time">Time (minutes)</label>
+    <input id="time" name="time" type="text"/>
 
-  <br/>
+    <br/>
 
-  <label for="work-category">Work Category</label>
-  <select id="work-category" name="work-category">
-    <option value="value"/>
-  </select>
+    <label for="work-category">Work Category</label>
+    <select id="work-category" name="work-category">
+      <option value="value"/>
+    </select>
 
-  <br/>
+    <br/>
 
-  <label for="tags">Tags</label>
-  <input id="tags" name="tags" type="text"/>
+    <label for="tags">Tags</label>
+    <input id="tags" name="tags" type="text"/>
 
-  <br/>
+    <br/>
 
-  <label for="description">Description</label>
-  <input id="description" name="description" type="text"/>
+    <label for="description">Description</label>
+    <input id="description" name="description" type="text"/>
 
-  <br/>
+    <br/>
 
-  <input type="submit"/>
+    <input type="submit"/>
 
-</form>
+  </form>
 
-<div id="existing-tasks">
+  <div id="existing-tasks">
 
-<h4>Existing tasks</h4>
+    <h4>Existing tasks</h4>
 
-<table>
-  <tr><td>Time</td><td>Work Category</td><td>Tags</td><td>Description</td></tr>
-</table>
+    <table>
+      <tr><td>Time</td><td>Work Category</td><td>Tags</td><td>Description</td></tr>
+    </table>
 
+  </div>
 
 </div>
