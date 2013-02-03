@@ -3,5 +3,6 @@
   :dependencies [[org.clojure/clojure "1.3.0"]
                  [ring "1.0.1"]
                  [compojure "1.0.1"]
-                 [enlive/enlive "1.0.0"]]
+                 [enlive/enlive "1.0.0"]
+                 [clj-time "0.4.4"]]
   )
