@@ -1,4 +1,8 @@
 #header {
     font-family: 'Tangerine', cursive;
     font-size: 72px;
+    background-image: url('../img/clj-icon.png');
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 72px;
 }
