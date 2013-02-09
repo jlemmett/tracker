@@ -2,8 +2,19 @@
   (:use [clj-time.core :exclude (extend)])
   )
 
+(defn first-day-of-week
+  "Given a date, returns the first date (Monday) of the week that the given date belongs to"
+  [date]
+  (minus date (days (- (day-of-week date) 1))))
+
+(defn gen-dates
+  "Given a date, returns a sequence containing the given date and the num-of-dates dates following that date"
+  [start-date num-of-dates]
+  (for [x (range 0 num-of-dates)
+        :let [date (plus start-date (days x))]]
+    date))
+
 (defn gen-week
   "Given a date, generates a 7 element sequence of the dates of the week that the given date belongs to. Starting from monday, ending in sunday"
   [date]
-  []
-  )
+  (gen-dates (first-day-of-week date) 7))
