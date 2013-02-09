@@ -1,8 +1,10 @@
 (ns tracker.views
-  (:require [net.cgrand.enlive-html :as h]))
+  (:require [net.cgrand.enlive-html :as h])
+  (:use [tracker.time]))
 
-
-(h/defsnippet main-page-content "resources/snippets.html" [:#main-page-content] [])
+(h/defsnippet main-page-content "resources/snippets.html" [:div#main-page-content] [dates]
+  [:div#dates]
+  (h/content  (apply str (interpose ", " (format-dates dates)))))
 
 (h/defsnippet header "resources/snippets.html" [:#header] [])
 

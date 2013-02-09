@@ -3,6 +3,7 @@
   (:use [compojure.core :only (GET PUT POST defroutes)])
   (:use [tracker.views])
   (:use [tracker.input])
+  (:use [tracker.time])
   (:use [ring.adapter.jetty :only (run-jetty)])
   (:require (compojure handler route)
             [ring.util.response :as response]
@@ -43,10 +44,8 @@
 
     ))
 
-
 (defroutes app*
-  (GET "/" request (main-template (main-page-content)))
-
+  (GET "/" request (main-template (main-page-content (current-weeks-dates))))
 
   ;; currently hard-coded to get tasks of  test-user for 2013-01-25
   (GET "/task-input" request (main-template (task-input (work-categories) (:2013-01-25 (@tasks :test-user)))))
