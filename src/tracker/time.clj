@@ -1,7 +1,6 @@
 (ns tracker.time
   (:use [clj-time.core :exclude (extend)])
-  (:use [clj-time.format])
-  )
+  (:use [clj-time.format]))
 
 (defn first-day-of-week
   "Given a date, returns the first date (Monday) of the week that the given date belongs to"
@@ -21,14 +20,12 @@
   (gen-dates (first-day-of-week date) 7))
 
 (defn current-weeks-dates []
-  (gen-week (now))
-  )
+  (gen-week (now)))
 
 (def basic-formatter (formatter "yyyy/MM/dd"))
 
 (defn format-date [date]
-  ( unparse basic-formatter date) )
+  (unparse basic-formatter date))
 
 (defn format-dates [dates]
-  (map format-date dates)
-  )
+  (map format-date dates))
