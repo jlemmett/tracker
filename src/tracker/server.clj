@@ -18,7 +18,7 @@
 (def ^:private tasks
   (ref
    {:test-user
-    {:2013-01-25 [
+    {:2013-02-04 [
                   {:time "45", :work-category :Iteration-1, :tags "jorma tarha", :description "asdf"}
                   {:time "90", :work-category :Uncategorized, :tags "saab pontiac", :description "jobalaba"}
                   {:time "180", :work-category :Uncategorized, :tags "hurlum", :description "sabaton"}
@@ -47,10 +47,17 @@
 (defroutes app*
   (GET "/" request (main-template (main-page-content (current-weeks-dates))))
 
-  ;; currently hard-coded to get tasks of  test-user for 2013-01-25
-  (GET "/task-input" request (main-template (task-input (work-categories) (:2013-01-25 (@tasks :test-user)))))
+  ;; currently hard-coded to get tasks of test-user
+  (GET "/task-input/:date" [date & params]
+       (main-template
+        (task-input (work-categories)
+                    ((@tasks :test-user) (keyword date))
+                    date)))
 
-  (POST "/task-input" [& params] (handle-task-input params) (response/redirect "/task-input") )
+  (POST "/task-input" [& params]
+        (handle-task-input params)
+        (response/redirect (format "/task-input/%s" ( :date params))))
+
 
   (compojure.route/resources "/" {:root "resources"})
   (compojure.route/not-found "This is not what you are looking for."))

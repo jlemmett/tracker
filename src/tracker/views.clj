@@ -8,7 +8,7 @@
                [:a.date]
                (h/do->
                 (h/content (str date))
-                (h/set-attr :href (format "task-input?date=%s" (str date))))))
+                (h/set-attr :href (format "task-input/%s" (str date))))))
 
 (h/defsnippet main-page-content "resources/snippets.html" [:div#main-page-content] [dates]
   [:div#dates]
@@ -36,7 +36,10 @@
 ;; The task input view: populates the work categories element with provided category names and shows
 ;; any existing tasks
 (h/defsnippet task-input "resources/task-input.html" [:#task-input]
-  [categories existing-tasks]
+  [categories existing-tasks date]
+
+  [:input#date] (h/set-attr :value date)
+
   [:select#work-category :option] (h/clone-for [c categories]
                                                (h/do->
                                                 (h/content c)

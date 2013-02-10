@@ -22,7 +22,7 @@
 (defn current-weeks-dates []
   (gen-week (now)))
 
-(def basic-formatter (formatter "yyyy/MM/dd"))
+(def basic-formatter (formatter "yyyy-MM-dd"))
 
 (defn format-date [date]
   (unparse basic-formatter date))
