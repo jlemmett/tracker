@@ -6,3 +6,12 @@
     background-repeat: no-repeat;
     background-size: 72px;
 }
+
+#header a {
+    color: black;
+    text-decoration: none;
+}
+
+#header a:hover {
+    text-decoration: underline;
+}
