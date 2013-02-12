@@ -7,12 +7,20 @@
   (h/clone-for [date dates]
                [:a.date]
                (h/do->
-                (h/content (str date))
-                (h/set-attr :href (format "task-input/%s" (str date))))))
+                (h/content (str (:display-value  date)))
+                (h/set-attr :href (format "task-input/%s" (str (:date-value date)))))))
+
+
+(defn disp-val-and-date-val [date]
+  {:display-value (format-date-with display-formatter date) :date-value (format-date date)})
+
+(defn display-val-date-val-pairify [dates]
+  (map disp-val-and-date-val dates))
+
 
 (h/defsnippet main-page-content "resources/snippets.html" [:div#main-page-content] [dates]
   [:div#dates]
-  (h/content  (date-links (format-dates dates))))
+  (h/content  (date-links (display-val-date-val-pairify dates))))
 
 (h/defsnippet header "resources/snippets.html" [:#header] [])
 

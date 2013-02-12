@@ -44,8 +44,10 @@
 
     ))
 
+
+
 (defroutes app*
-  (GET "/" request (main-template (main-page-content (current-weeks-dates))))
+  (GET "/" request (main-template ((main-page-content (current-weeks-date)))))
 
   ;; currently hard-coded to get tasks of test-user
   (GET "/task-input/:date" [date & params]

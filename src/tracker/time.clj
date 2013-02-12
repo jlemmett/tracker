@@ -24,8 +24,14 @@
 
 (def basic-formatter (formatter "yyyy-MM-dd"))
 
+;; TODO-RENAME
 (defn format-date [date]
   (unparse basic-formatter date))
 
 (defn format-dates [dates]
   (map format-date dates))
+
+(defn format-date-with [formatter date]
+  (unparse formatter date))
+
+(def display-formatter (formatter "E d (MMM)"))
