@@ -6,6 +6,7 @@ A simple work time tracker webapp written in Clojure for learning purposes.
 
 ![Screenshot of the front page](/media/main-page-current.png "Screenshot of the front page")
 
+
 ## Usage
 
 TBD
