@@ -4,5 +4,4 @@
                  [ring "1.0.1"]
                  [compojure "1.0.1"]
                  [enlive/enlive "1.0.0"]
-                 [clj-time "0.4.4"]]
-  )
+                 [clj-time "0.4.4"]])
