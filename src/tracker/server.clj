@@ -15,7 +15,7 @@
 ;(def ^:private tasks (ref {}))
 
 ; Some initial data for testing
-(def ^:private tasks
+(def tasks ; ^:private
   (ref
    {:test-user
     {:2013-02-04 [
@@ -46,10 +46,11 @@
 
 
 
+(defn current-weeks-dates-and-worked-hours [dates-of-user]
+  (current-weeks-dates))
+
 (defroutes app*
-  (GET "/" request (main-template (main-page-content (current-weeks-dates))))
-
-
+  (GET "/" request (main-template (main-page-content (current-weeks-dates-and-worked-hours (@tasks :test-user)))))
 
   ;; currently hard-coded to get tasks of test-user
   (GET "/task-input/:date" [date & params]
