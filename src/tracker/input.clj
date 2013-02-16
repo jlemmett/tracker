@@ -20,17 +20,12 @@
     (not ((@tasks user) date)) (alter tasks assoc-in [user date]  [task-input])
 
     ;; case: existing user, existing date, new task
-    ((@tasks user) date) (alter tasks assoc-in [user date] (conj ((@tasks user) date) task-input))
+    ((@tasks user) date) (alter tasks assoc-in [user date] (conj ((@tasks user) date) task-input)))))
 
-    ;; what happens if we get here?
-    )
-
-
-
-
+(defn dates-and-worked-hours [dates dates-and-tasks]
+  ; work in progress
+  (select-keys dates-and-tasks dates)
+;  (for [[k v] {1 2 3 4}] (+ k v)) => (3 7)
 
 
-
-
-   )
   )

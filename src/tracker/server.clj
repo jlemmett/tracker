@@ -4,6 +4,7 @@
   (:use [tracker.views])
   (:use [tracker.input])
   (:use [tracker.time])
+  (:use [clj-time.core :exclude (extend)])
   (:use [ring.adapter.jetty :only (run-jetty)])
   (:require (compojure handler route)
             [ring.util.response :as response]
@@ -18,7 +19,7 @@
 (def tasks ; ^:private
   (ref
    {:test-user
-    {:2013-02-04 [
+    {(date-time 2013 2 4) [
                   {:time "45", :work-category :Iteration-1, :tags "jorma tarha", :description "asdf"}
                   {:time "90", :work-category :Uncategorized, :tags "saab pontiac", :description "jobalaba"}
                   {:time "180", :work-category :Uncategorized, :tags "hurlum", :description "sabaton"}
@@ -31,7 +32,7 @@
 
 (defn handle-task-input [params]
   (let [user (keyword (:user params))
-        date (keyword (:date params))
+        date (parse-date (:date params))
         time (:time params)
         work-category (keyword (:work-category params))
         tags (:tags params)
@@ -44,9 +45,7 @@
 
     ))
 
-
-
-(defn current-weeks-dates-and-worked-hours [dates-of-user]
+(defn current-weeks-dates-and-worked-hours [dates-and-tasks]
   (current-weeks-dates))
 
 (defroutes app*
@@ -56,12 +55,12 @@
   (GET "/task-input/:date" [date & params]
        (main-template
         (task-input (work-categories)
-                    ((@tasks :test-user) (keyword date))
+                    ((@tasks :test-user) (parse-date date))
                     date)))
 
   (POST "/task-input" [& params]
         (handle-task-input params)
-        (response/redirect (format "/task-input/%s" ( :date params))))
+        (response/redirect (format "/task-input/%s" (:date params))))
 
 
   (compojure.route/resources "/" {:root "resources"})

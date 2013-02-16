@@ -28,6 +28,9 @@
 (defn format-date [date]
   (unparse basic-formatter date))
 
+(defn parse-date [date]
+  (parse basic-formatter date))
+
 (defn format-dates [dates]
   (map format-date dates))
 

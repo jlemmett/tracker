@@ -1,6 +1,7 @@
 (ns tracker.test.input
   (:use [tracker.input])
-  (:use [clojure.test]))
+  (:use [clojure.test])
+  (:use [clj-time.core :exclude (extend)]))
 
 (deftest read-time-test
 
@@ -10,8 +11,7 @@
 
   )
 
-
-(deftest test-add-task-entry
+(deftest add-task-entry-test
 
   (let [tasks (ref {})]
 
@@ -68,4 +68,22 @@
 
          @tasks))
     )
+  )
+
+
+(deftest dates-and-worked-hours-test
+
+  (let [dates []
+        dates-and-tasks {}]
+
+    (is (= {} (dates-and-worked-hours dates dates-and-tasks))))
+
+
+    (let [dates [(date-time 2013 2 16)]
+        dates-and-tasks {(date-time 2013 2 16) [{:time 15} {:time 30}]}]
+
+    (is (= {(date-time 2013 2 16) 45} (dates-and-worked-hours dates dates-and-tasks))))
+
+
+
   )

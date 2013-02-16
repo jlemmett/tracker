@@ -14,5 +14,11 @@
            (date-time 2013 2 2)
            (date-time 2013 2 3)]
 
-         (gen-week (date-time 2013 2 3))))
+         (gen-week (date-time 2013 2 3)))))
+
+(deftest parse-date-test
+
+  (is (= (date-time 2013 1 28) (parse-date "2013-01-28")))
+  (is (= (date-time 2013 1 28) (parse-date "2013-1-28")))
+
   )
