@@ -76,14 +76,30 @@
   (let [dates []
         dates-and-tasks {}]
 
-    (is (= {} (dates-and-worked-hours dates dates-and-tasks))))
+    (is (= nil (dates-and-worked-hours dates dates-and-tasks))))
 
-
-    (let [dates [(date-time 2013 2 16)]
+  (let [dates [(date-time 2013 2 16)]
         dates-and-tasks {(date-time 2013 2 16) [{:time 15} {:time 30}]}]
 
     (is (= {(date-time 2013 2 16) 45} (dates-and-worked-hours dates dates-and-tasks))))
 
+  (let [dates [(date-time 2013 2 16)]
+        dates-and-tasks {(date-time 2013 2 16) [{:time 15} {:time 30}]
+                         (date-time 2013 2 17) [{:time 16} {:time 31}]}]
 
+    (is (= {(date-time 2013 2 16) 45} (dates-and-worked-hours dates dates-and-tasks))))
+
+
+  (let [dates [(date-time 2013 2 16) (date-time 2013 2 17)]
+        dates-and-tasks {(date-time 2013 2 16) [{:time 15} {:time 30}]
+                         (date-time 2013 2 17) [{:time 16} {:time 31}]}]
+
+    (is (= {(date-time 2013 2 16) 45, (date-time 2013 2 17) 47} (dates-and-worked-hours dates dates-and-tasks))))
+
+
+  (let [dates [(date-time 2013 2 16) (date-time 2013 2 17)]
+        dates-and-tasks {}]
+
+    (is (= {(date-time 2013 2 16) 0, (date-time 2013 2 17) 0} (dates-and-worked-hours dates dates-and-tasks))   ))
 
   )

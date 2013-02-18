@@ -7,12 +7,12 @@
   (h/clone-for [date dates]
                [:a.date]
                (h/do->
-                (h/content (str (:display-value  date)))
+                (h/content (str (:display-value  date) " (" (str date) ")"))
                 (h/set-attr :href (format "task-input/%s" (str (:date-value date)))))))
 
 
 (defn disp-val-and-date-val [date]
-  {:display-value (format-date-with display-formatter date) :date-value (format-date date)})
+  {:display-value (format-date-with display-formatter (first date)) :date-value (format-date (first date)) :time (last date)})
 
 (defn display-val-date-val-pairify [dates]
   (map disp-val-and-date-val dates))

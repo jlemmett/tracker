@@ -23,9 +23,19 @@
     ((@tasks user) date) (alter tasks assoc-in [user date] (conj ((@tasks user) date) task-input)))))
 
 (defn dates-and-worked-hours [dates dates-and-tasks]
-  ; work in progress
-  (select-keys dates-and-tasks dates)
-;  (for [[k v] {1 2 3 4}] (+ k v)) => (3 7)
+
+  (let [dates-with-zero-times (apply merge (map (fn [date] (assoc {} date 0)) dates))
+        dates-with-existing-times
+        (apply merge
+               (map (fn [x]
+                      (assoc {}
+                        (nth x 0)
+                        (reduce + (map :time (flatten (nth x 1))))))
+
+                    (select-keys dates-and-tasks dates)))
+        ]
 
 
-  )
+
+
+    (merge dates-with-zero-times dates-with-existing-times)))

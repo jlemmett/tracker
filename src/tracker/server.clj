@@ -16,10 +16,10 @@
 ;(def ^:private tasks (ref {}))
 
 ; Some initial data for testing
-(def tasks ; ^:private
+(def ^:private tasks
   (ref
    {:test-user
-    {(date-time 2013 2 4) [
+    {(date-time 2013 2 24) [
                   {:time "45", :work-category :Iteration-1, :tags "jorma tarha", :description "asdf"}
                   {:time "90", :work-category :Uncategorized, :tags "saab pontiac", :description "jobalaba"}
                   {:time "180", :work-category :Uncategorized, :tags "hurlum", :description "sabaton"}
@@ -46,7 +46,7 @@
     ))
 
 (defn current-weeks-dates-and-worked-hours [dates-and-tasks]
-  (current-weeks-dates))
+  (dates-and-worked-hours (current-weeks-dates) dates-and-tasks))
 
 (defroutes app*
   (GET "/" request (main-template (main-page-content (current-weeks-dates-and-worked-hours (@tasks :test-user)))))
