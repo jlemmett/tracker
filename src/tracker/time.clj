@@ -20,7 +20,9 @@
   (gen-dates (first-day-of-week date) 7))
 
 (defn current-weeks-dates []
-  (gen-week (now)))
+  (let [current-date-time (now)
+        current-date (date-midnight (year current-date-time) (month current-date-time) (day current-date-time))]
+    (gen-week current-date)))
 
 (def basic-formatter (formatter "yyyy-MM-dd"))
 

@@ -32,10 +32,6 @@
                         (nth x 0)
                         (reduce + (map :time (flatten (nth x 1))))))
 
-                    (select-keys dates-and-tasks dates)))
-        ]
-
-
-
+                    (select-keys dates-and-tasks dates)))]
 
     (merge dates-with-zero-times dates-with-existing-times)))

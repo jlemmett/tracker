@@ -20,10 +20,10 @@
   (ref
    {:test-user
     {(date-time 2013 2 24) [
-                  {:time "45", :work-category :Iteration-1, :tags "jorma tarha", :description "asdf"}
-                  {:time "90", :work-category :Uncategorized, :tags "saab pontiac", :description "jobalaba"}
-                  {:time "180", :work-category :Uncategorized, :tags "hurlum", :description "sabaton"}
-                  {:time "350", :work-category :Iteration-1, :tags "V0001 F0025", :description ""}]}}))
+                  {:time 45, :work-category :Iteration-1, :tags "jorma tarha", :description "asdf"}
+                  {:time 90, :work-category :Uncategorized, :tags "saab pontiac", :description "jobalaba"}
+                  {:time 180, :work-category :Uncategorized, :tags "hurlum", :description "sabaton"}
+                  {:time 350, :work-category :Iteration-1, :tags "V0001 F0025", :description ""}]}}))
 
 ; Some categories for input options
 (defn work-categories []
@@ -33,7 +33,7 @@
 (defn handle-task-input [params]
   (let [user (keyword (:user params))
         date (parse-date (:date params))
-        time (:time params)
+        time (read-time (:time params))
         work-category (keyword (:work-category params))
         tags (:tags params)
         description (:description params)]

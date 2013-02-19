@@ -5,10 +5,15 @@
 (h/defsnippet date-links "resources/snippets.html" [:div.date-container] [dates]
   [:div.date-container]
   (h/clone-for [date dates]
+
                [:a.date]
                (h/do->
-                (h/content (str (:display-value  date) " (" (str date) ")"))
-                (h/set-attr :href (format "task-input/%s" (str (:date-value date)))))))
+                (h/content (str (:display-value  date)))
+                (h/set-attr :href (format "task-input/%s" (str (:date-value date)))))
+
+               [:div.date-content]
+               (h/do->
+                (h/content (str (:time date))))))
 
 
 (defn disp-val-and-date-val [date]
@@ -30,7 +35,7 @@
              [:tr.task-row]
              (h/clone-for [task tasks]
                           [:td.time]
-                          (h/content (:time task))
+                          (h/content (str (:time task)))
 
                           [:td.work-category]
                           (h/content (str (:work-category task)))
