@@ -1,19 +1,20 @@
 (ns tracker.views
   (:require [net.cgrand.enlive-html :as h])
-  (:use [tracker.time]))
+  (:use [tracker.time])
+  (:use [tracker.output]))
 
-(h/defsnippet date-links "resources/snippets.html" [:div.date-container] [dates]
+(h/defsnippet date-links "resources/snippets.html" [:div.date-container] [date-data]
   [:div.date-container]
-  (h/clone-for [date dates]
+  (h/clone-for [data-for-date date-data]
 
                [:a.date]
                (h/do->
-                (h/content (str (:display-value  date)))
-                (h/set-attr :href (format "task-input/%s" (str (:date-value date)))))
+                (h/content (str (:display-value  data-for-date)))
+                (h/set-attr :href (format "task-input/%s" (str (:date-value data-for-date)))))
 
                [:div.date-content]
                (h/do->
-                (h/content (str (:time date))))))
+                (h/content (to-hrs-and-mins (:time data-for-date))))))
 
 
 (defn disp-val-and-date-val [date]
@@ -35,7 +36,7 @@
              [:tr.task-row]
              (h/clone-for [task tasks]
                           [:td.time]
-                          (h/content (str (:time task)))
+                          (h/content (to-hrs-and-mins (:time task)))
 
                           [:td.work-category]
                           (h/content (str (:work-category task)))
