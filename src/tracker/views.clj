@@ -10,11 +10,11 @@
                [:a.date]
                (h/do->
                 (h/content (str (:display-value  data-for-date)))
-                (h/set-attr :href format))
+                (h/set-attr :href (format "task-input/%s" (str (:date-value data-for-date)))))
 
-               [:div.date-content]
-               (h/do->
-                (h/content (to-hrs-and-mins (:time data-for-date))))))
+                [:div.date-content]
+                (h/do->
+                 (h/content (to-hrs-and-mins (:time data-for-date))))))
 
 
 (defn disp-val-and-date-val [date]
