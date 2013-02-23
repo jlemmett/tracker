@@ -36,3 +36,45 @@
     float: left;
     font-size: small;
 }
+
+
+/* task input */
+
+label {
+    display: inline-block;
+    width: 98px;
+    text-align: right;
+}
+
+#task-input-form {
+    margin-top: 15px;
+}
+
+
+#task-input-form input[type="text"] {
+    width: 173px;
+}
+
+#task-input-form select {
+    width: 176px;
+}
+
+#existing-tasks-table {
+    width: 100%;
+}
+
+#existing-tasks-table th.time,td.time {
+    text-align: right;
+}
+
+#existing-tasks-table tbody td {
+    padding: 5px 5px 5px 5px;
+    border-bottom: solid lightgray 1px;
+}
+
+#existing-tasks-table thead th {
+    padding-left: 5px;
+    padding-right:  5px;
+    border-bottom: solid black 2px;
+    margin-bottom: 10px;
+}

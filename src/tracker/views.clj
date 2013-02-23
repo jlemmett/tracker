@@ -54,14 +54,14 @@
 
   [:#visible-date] (h/content (format-date-with basic-formatter date))
 
-  [:input#date] (h/set-attr :value date)
+  [:input#date] (h/set-attr :value (format-date-with basic-formatter date))
 
   [:select#work-category :option] (h/clone-for [c categories]
                                                (h/do->
                                                 (h/content c)
                                                 (h/set-attr :value c)))
 
-  [:#existing-tasks :table] (h/content (task-rows existing-tasks)))
+  [:#existing-tasks :table :tbody] (h/content (task-rows existing-tasks)))
 
 
 (h/deftemplate main-template "resources/base-template.html" [content]
