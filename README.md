@@ -4,10 +4,12 @@ A simple work time tracker webapp written in Clojure for learning purposes.
 
 ## How it looks at the moment
 
-Front page
+Front page  
+
 ![Screenshot of the front page](/media/main-page-current.png "Screenshot of the front page")
 
-Task input page
+Task input page  
+
 ![Screenshot of the task input page](/media/task-input-page-current.png "Screenshot of the task input page")
 
 ## Usage
