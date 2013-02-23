@@ -10,7 +10,7 @@
                [:a.date]
                (h/do->
                 (h/content (str (:display-value  data-for-date)))
-                (h/set-attr :href (format "task-input/%s" (str (:date-value data-for-date)))))
+                (h/set-attr :href format))
 
                [:div.date-content]
                (h/do->
@@ -51,6 +51,8 @@
 ;; any existing tasks
 (h/defsnippet task-input "resources/task-input.html" [:#task-input]
   [categories existing-tasks date]
+
+  [:#visible-date] (h/content (format-date-with basic-formatter date))
 
   [:input#date] (h/set-attr :value date)
 

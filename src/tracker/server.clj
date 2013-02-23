@@ -40,6 +40,7 @@
 
     (add-task-entry user date
                     {:time time :work-category work-category :tags tags :description description}
+
                     tasks)
 
 
@@ -56,7 +57,7 @@
        (main-template
         (task-input (work-categories)
                     ((@tasks :test-user) (parse-date date))
-                    date)))
+                    (parse-date date))))
 
   (POST "/task-input" [& params]
         (handle-task-input params)

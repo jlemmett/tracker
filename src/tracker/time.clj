@@ -31,6 +31,7 @@
   (unparse basic-formatter date))
 
 (defn parse-date [date]
+  "Converts a date string in the form 'yyyy-MM-dd' into a datetime instance"
   (parse basic-formatter date))
 
 (defn format-dates [dates]
