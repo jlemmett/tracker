@@ -46,11 +46,16 @@
 
     ))
 
+;; todo combine these two
 (defn current-weeks-dates-and-worked-hours [dates-and-tasks]
   (dates-and-worked-hours (current-weeks-dates) dates-and-tasks))
 
+(defn weeks-dates-and-worked-hours-from [date dates-and-tasks]
+  (dates-and-worked-hours (week-starting-from date) dates-and-tasks))
+
 (defroutes app*
   (GET "/" request (main-template (main-page-content (current-weeks-dates-and-worked-hours (@tasks :test-user)))))
+  (GET "/starting-at/:date" [date & params] (main-template (main-page-content (weeks-dates-and-worked-hours-from (parse-date date) (@tasks :test-user)))))
 
   ;; currently hard-coded to get tasks of test-user
   (GET "/task-input/:date" [date & params]

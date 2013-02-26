@@ -8,6 +8,8 @@
 (defn inc-date-stream [start-date] (iterate inc-date start-date))
 (defn dec-date-stream [start-date] (iterate dec-date start-date))
 
+(defn nth-date-from [date n] (nth (inc-date-stream date) n))
+
 (defn first-day-of-week
   "Given a date, returns the first date (Monday) of the week that the given date belongs to"
   [date]
@@ -23,15 +25,14 @@
   [date]
   (gen-dates (first-day-of-week date) 7))
 
+(defn week-starting-from [date]
+  (let [date-time date
+        date (date-midnight (year date-time) (month date-time) (day date-time))]
+    (gen-week date)))
+
+
 (defn current-weeks-dates []
-  (let [current-date-time (now)
-        current-date (date-midnight (year current-date-time) (month current-date-time) (day current-date-time))]
-    (gen-week current-date)))
-
-
-
-
-
+  (week-starting-from (now)))
 
 (def basic-formatter (formatter "yyyy-MM-dd"))
 

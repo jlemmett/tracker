@@ -28,7 +28,7 @@
 
 }
 
-.date-container {
+.date-container, #back-arrows, #forward-arrows {
     border: solid black 1px;
     margin-left: 1px;
     height: 50px;
@@ -36,6 +36,7 @@
     float: left;
     font-size: small;
 }
+
 
 
 /* task input */

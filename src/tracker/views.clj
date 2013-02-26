@@ -10,7 +10,7 @@
                [:a.date]
                (h/do->
                 (h/content (str (:display-value  data-for-date)))
-                (h/set-attr :href (format "task-input/%s" (str (:date-value data-for-date)))))
+                (h/set-attr :href (format "/task-input/%s" (str (:date-value data-for-date)))))
 
                 [:div.date-content]
                 (h/do->
@@ -24,9 +24,23 @@
   (map disp-val-and-date-val dates))
 
 
+(h/defsnippet back-arrows "resources/snippets.html" [:div#back-arrows] [])
+(h/defsnippet forward-arrows "resources/snippets.html" [:div#forward-arrows] [])
+
 (h/defsnippet main-page-content "resources/snippets.html" [:div#main-page-content] [dates]
   [:div#dates]
-  (h/content  (date-links (display-val-date-val-pairify dates))))
+  (h/do->
+
+   (h/content (back-arrows))
+   (h/append  (date-links (display-val-date-val-pairify dates)))
+   (h/append (forward-arrows)))
+
+  ;; TODO: Combine these
+  [:a#forward-small]
+  (h/set-attr :href (str "/starting-at/" (format-date (nth-date-from (first (first dates)) 1))))
+
+  [:a#forward-big]
+  (h/set-attr :href (str "/starting-at/" (format-date (nth-date-from (first (first dates)) 7)))))
 
 (h/defsnippet header "resources/snippets.html" [:#header] [])
 
