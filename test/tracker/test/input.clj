@@ -76,7 +76,7 @@
   (let [dates []
         dates-and-tasks {}]
 
-    (is (= nil (dates-and-worked-hours dates dates-and-tasks))))
+    (is (= {} (dates-and-worked-hours dates dates-and-tasks))))
 
   (let [dates [(date-time 2013 2 16)]
         dates-and-tasks {(date-time 2013 2 16) [{:time 15} {:time 30}]}]
