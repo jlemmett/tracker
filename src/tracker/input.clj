@@ -34,4 +34,5 @@
 
                     (select-keys dates-and-tasks dates)))]
 
-    (merge dates-with-zero-times dates-with-existing-times)))
+    (into (sorted-map) (merge dates-with-zero-times dates-with-existing-times)))
+)
