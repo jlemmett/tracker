@@ -1,6 +1,7 @@
 (ns tracker.time
   (:use [clj-time.core :exclude (extend)])
-  (:use [clj-time.format]))
+  (:use [clj-time.format])
+  (:use [clojure.math.numeric-tower]))
 
 ;; for streaming dates
 (defn inc-date [date] (plus date (days 1)))
@@ -8,7 +9,10 @@
 (defn inc-date-stream [start-date] (iterate inc-date start-date))
 (defn dec-date-stream [start-date] (iterate dec-date start-date))
 
-(defn nth-date-from [date n] (nth (inc-date-stream date) n))
+(defn nth-date-from [date n]
+  (let [stream (if (> n 0) inc-date-stream dec-date-stream)
+        num-of-days (abs n)]
+    (nth (stream date) num-of-days)))
 
 (defn first-day-of-week
   "Given a date, returns the first date (Monday) of the week that the given date belongs to"

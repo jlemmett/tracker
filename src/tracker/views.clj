@@ -36,8 +36,8 @@
    (h/append (forward-arrows)))
 
   ;; TODO: Combine these
-  [:a#forward-small]
-  (h/set-attr :href (str "/starting-at/" (format-date (nth-date-from (first (first dates)) 1))))
+  [:a#backward-big]
+  (h/set-attr :href (str "/starting-at/" (format-date (nth-date-from (first (first dates)) -7))))
 
   [:a#forward-big]
   (h/set-attr :href (str "/starting-at/" (format-date (nth-date-from (first (first dates)) 7)))))
